@@ -14,6 +14,5 @@ def ingest_text(name: str, text: str):
    
     vs = get_vectorstore()
     vs.add_texts(chunks, metadatas=metadatas)
-    vs.persist()
-
+    
     return len(chunks)

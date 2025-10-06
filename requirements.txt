@@ -1,6 +1,10 @@
 fastapi
 uvicorn[standard]
 langchain
+langchain-community
+langchain-openai
+langchain-chroma
+langchain-huggingface
 chromadb
 openai
 python-multipart
