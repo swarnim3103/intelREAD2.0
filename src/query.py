@@ -1,20 +1,30 @@
 import os
 from dotenv import load_dotenv
-from .vectorstore import get_vectorstore
+from huggingface_hub import InferenceClient
 from langchain.chains import RetrievalQA
-from langchain_community.llms import HuggingFaceHub  
+from langchain.prompts import PromptTemplate
+from .ingestion import get_vectorstore
 
 load_dotenv()
-HUGGINGFACE_API_KEY = os.getenv("HUGGINGFACE_API_KEY")
 
-# --- Option 1: Free local HuggingFace model ---
-# (uses HuggingFace Hub, requires a HF token if model is gated)
-# Replace with "google/flan-t5-small" or "google/flan-t5-base"
+# Initialize HF Inference Client
+hf_token = os.getenv("HUGGINGFACEHUB_API_TOKEN")
+client = InferenceClient(model="google/flan-t5-large", token=hf_token)
+
+def run_llm(prompt: str) -> str:
+    """Send prompt to Hugging Face model and return generated text"""
+    response = client.text_generation(prompt, max_new_tokens=200)
+    return response
+
 def get_qa_chain():
-    vs = get_vectorstore()
-    retriever = vs.as_retriever(search_kwargs={"k": 3})
-    llm = HuggingFaceHub(    repo_id="google/flan-t5-large",
-    model_kwargs={"temperature": 0.7, "max_length": 512},
-    task="text2text-generation",
-    huggingfacehub_api_token=HUGGINGFACE_API_KEY)
-    return RetrievalQA.from_chain_type(llm=llm, retriever=retriever)
+    vectorstore = get_vectorstore()
+    retriever = vectorstore.as_retriever()
+
+    # Simple QA pipeline: retrieve docs, then call HF model
+    def qa_function(query: str):
+        docs = retriever.get_relevant_documents(query)
+        context = "\n".join([d.page_content for d in docs])
+        prompt = f"Answer the question based on context:\n\n{context}\n\nQuestion: {query}\nAnswer:"
+        return run_llm(prompt)
+
+    return qa_function

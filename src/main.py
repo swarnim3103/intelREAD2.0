@@ -6,6 +6,7 @@ from pydantic import BaseModel
 
 
 app = FastAPI()
+qa = get_qa_chain()
 
 @app.get("/health")
 def health():
@@ -26,6 +27,5 @@ class AskRequest(BaseModel):
 
 @app.post("/ask")
 def ask(req: AskRequest):
-    qa = get_qa_chain()
-    result = qa.run(req.question)
-    return {"answer": result}
+    answer = qa(req.question)   
+    return {"answer": answer}
