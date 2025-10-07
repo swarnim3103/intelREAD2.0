@@ -7,7 +7,8 @@
   - 3. Added src/vectorstore.py for create/load a Chroma vector DB, add texts and similarity search.
   - 4. Added src/ingestion.py for functions to read .txt or .pdf, clean text, split into chunks (with overlap).
   - 5. Used Chroma for vector database 
-  - 6. Hugging face for free open api 
+  - 6. Hugging face for free open api
+  - 7. Basic frontend inspired from NotebookLM 
 
 > ```bash
 > pip install -r requirements.txt
