@@ -1,4 +1,5 @@
 import type { Route } from "./+types/home";
+import Dashboard from "../pages/dashboard";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -10,7 +11,7 @@ export function meta({}: Route.MetaArgs) {
 export default function Home() {
   return (
     <>
-      <h1>Welcome to React Router!</h1>
+      <Dashboard />
 
     </>
   );
