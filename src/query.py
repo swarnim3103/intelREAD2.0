@@ -1,20 +1,32 @@
 import os
 from dotenv import load_dotenv
-from huggingface_hub import InferenceClient
+import google.generativeai as genai
 from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
-from .ingestion import get_vectorstore
+from .vectorstore import get_vectorstore
 
 load_dotenv()
 
-# Initialize HF Inference Client
-hf_token = os.getenv("HUGGINGFACEHUB_API_TOKEN")
-client = InferenceClient(model="google/flan-t5-large", token=hf_token)
+# Configure Gemini API
+gemini_api_key = os.getenv("GEMINI_API_KEY")
+if gemini_api_key:
+    genai.configure(api_key=gemini_api_key)
 
 def run_llm(prompt: str) -> str:
-    """Send prompt to Hugging Face model and return generated text"""
-    response = client.text_generation(prompt, max_new_tokens=200)
-    return response
+    """Send prompt to Gemini model and return generated text"""
+    try:
+        if not gemini_api_key:
+            return "Error: GEMINI_API_KEY not found in environment variables"
+        
+        # Initialize the Gemini model (using latest flash model)
+        model = genai.GenerativeModel('models/gemini-2.5-flash')
+        
+        # Generate content
+        response = model.generate_content(prompt)
+        return response.text
+        
+    except Exception as e:
+        return f"Error calling Gemini API: {str(e)}"
 
 def get_qa_chain():
     vectorstore = get_vectorstore()
