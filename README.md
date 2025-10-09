@@ -41,21 +41,18 @@
   - 2. Added src/main.py for exposing endpoints
   - 3. Added src/vectorstore.py for create/load a Chroma vector DB, add texts and similarity search.
   - 4. Added src/ingestion.py for functions to read .txt or .pdf, clean text, split into chunks (with overlap).
-  - 5. Used Chroma for vector database 
-<<<<<<< HEAD
-  - 6. Hugging face for free open api 
-  - 7. switched to gemini 
-  - 8. 
-
-` (learnings for api  -->
-1. didnt have credits in openai to use it 
-2. hugging face was open but the model type and my project clashed due to InferenceClient`
-3. in gemini looked for right model and it worked ) `
-
-=======
+  - 5. Used Chroma for vector database
   - 6. Hugging face for free open api
   - 7. Basic frontend inspired from NotebookLM 
->>>>>>> cd37c93df247b645acd342bd0ac45f42312d6490
+  - 8. switched to gemini 
+  - 9. 
+
+>  (learnings for api  -->
+> 1. didnt have credits in openai to use it 
+> 2. hugging face was open but the model type and my project clashed due to InferenceClient
+> 3. in gemini looked for right model and it worked )
+
+ 
 
 > ```bash
 > pip install -r requirements.txt
