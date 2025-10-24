@@ -57,3 +57,34 @@
 > ```bash
 > pip install -r requirements.txt
 > ```
+
+> ```bash
+> uvicorn src.main:app --reload --port 8000
+> ```
+
+>```bash
+>.venv\Scripts\pip.exe install (dependency)
+>```
+
+>> you have to assign types in typescript functions
+>>cors middleware - i made the server same 
+                  - but what should have been done
+                  >>```bash 
+                  >>from fastapi.middleware.cors import CORSMiddleware
+
+app = FastAPI()
+
+origins = [
+    "http://localhost.tiangolo.com",
+    "https://localhost.tiangolo.com",
+    "http://localhost",
+    "http://localhost:8080",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)```

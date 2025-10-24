@@ -7,4 +7,5 @@ export default [index("routes/home.tsx"),
     route("/Notebook", "pages/notebook.tsx"),
     route("/Upload", "components/upload.tsx"),
     route("/Header", "components/header.tsx"),
+    route("/Chat", "components/chat.tsx"),
 ] satisfies RouteConfig;

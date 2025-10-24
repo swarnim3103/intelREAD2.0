@@ -32,7 +32,7 @@ def get_qa_chain():
     vectorstore = get_vectorstore()
     retriever = vectorstore.as_retriever()
 
-    # Simple QA pipeline: retrieve docs, then call HF model
+    # Simple QA pipeline: retrieve docs, then call gemini model
     def qa_function(query: str):
         docs = retriever.get_relevant_documents(query)
         context = "\n".join([d.page_content for d in docs])

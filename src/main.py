@@ -1,9 +1,9 @@
-from fastapi import FastAPI
+from fastapi import FastAPI,UploadFile, File
 from pydantic import BaseModel
 from .ingestion import ingest_text
 from .query import get_qa_chain
 from pydantic import BaseModel
-
+from PyPDF2 import PdfReader
 
 app = FastAPI()
 qa = get_qa_chain()
@@ -13,12 +13,15 @@ def health():
     return {"status": "ok"}
 
 class IngestRequest(BaseModel):
-    name: str
-    text: str
+   file: UploadFile = File(...)
 
 @app.post("/ingest_text")
 def ingest(req: IngestRequest):
-    count = ingest_text(req.name, req.text)
+    pdf_reader = PdfReader(req.file.file)
+    text = ""
+    for page in pdf_reader.pages:
+        text += page.extract_text()
+    count = ingest_text(req.file.filename, text)
     return {"status": "ok", "chunks_added": count}
 
 
