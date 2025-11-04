@@ -36,7 +36,7 @@ def get_qa_chain():
     def qa_function(query: str):
         docs = retriever.get_relevant_documents(query)
         context = "\n".join([d.page_content for d in docs])
-        prompt = f"Answer the question based on context:\n\n{context}\n\nQuestion: {query}\nAnswer:"
+        prompt = f"Answer the question based on context with added knowledge in clear format:\n\n{context}\n\nQuestion: {query}\nAnswer:"
         return run_llm(prompt)
 
     return qa_function

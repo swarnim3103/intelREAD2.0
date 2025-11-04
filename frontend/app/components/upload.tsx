@@ -50,16 +50,16 @@ export default function Upload() {
           </div>
         </div>
       ) : (
-        <div className="flex mt-20 mr-10 ml-10 gap-4">
-          <div className=" w-3/4 h-[90vh] flex-1">
+        <div className="overflow-y-scroll flex mt-20 mr-10 ml-10 gap-4">
+          <div className="w-auto h-[80vh] flex-1">
             <iframe
               src={pdfUrl || undefined}
-              className="w-full h-full border rounded-lg"
+              className="w-[85vh] h-full border rounded-lg"
               title="PDF Preview"
             />
           </div>
           <div className="flex-2">
-            <Chat />
+            <Chat/>
           </div>
         </div>
       )}
