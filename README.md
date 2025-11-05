@@ -45,14 +45,20 @@
   - 6. Hugging face for free open api
   - 7. Basic frontend inspired from NotebookLM 
   - 8. switched to gemini 
-  - 9. 
+  - 9. how i made the upload and preview of pdf
+  - 10. how i made the chat component
 
 >  (learnings for api  -->
 > 1. didnt have credits in openai to use it 
 > 2. hugging face was open but the model type and my project clashed due to InferenceClient
 > 3. in gemini looked for right model and it worked )
 
- 
+## Upload File
+
+
+## Chat 
+
+
 
 > ```bash
 > pip install -r requirements.txt
@@ -67,24 +73,21 @@
 >```
 
 >> you have to assign types in typescript functions
->>cors middleware - i made the server same 
-                  - but what should have been done
-                  >>```bash 
-                  >>from fastapi.middleware.cors import CORSMiddleware
-
-app = FastAPI()
-
-origins = [
-    "http://localhost.tiangolo.com",
-    "https://localhost.tiangolo.com",
-    "http://localhost",
-    "http://localhost:8080",
-]
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)```
+>>
+>> 
+>cors middleware 
+> ```bash 
+>from fastapi.middleware.cors import CORSMiddleware
+>app = FastAPI()
+>origins = [
+>    "http://localhost",
+>    "http://localhost:8080",
+>]
+>app.add_middleware(
+>    CORSMiddleware,
+>   allow_origins=origins,
+>   allow_credentials=True,
+>    allow_methods=["*"],
+>    allow_headers=["*"],
+>)
+> ```
