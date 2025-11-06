@@ -31,7 +31,7 @@ export default function Upload() {
   return (
     <>
       {!isUploaded ? (
-        <div className="flex justify-center mt-10 gap-6">
+        <div className="flex justify-center mt-50 gap-6">
           <div className="w-1/2">
             <label className="cursor-pointer flex flex-col items-center justify-center border-2 border-dashed border-blue-400 p-10 rounded-lg bg-gradient-to-r from-blue-300 to-purple-300 opacity-80 hover:opacity-100 transition">
               <span className="text-5xl text-blue-400 bg-white w-16 h-16 flex items-center justify-center rounded-full border shadow-lg mb-4">
