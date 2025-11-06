@@ -34,7 +34,12 @@
   - The user receives a contextual, fact-based response.
 
 
- 
+ - #### IntelREAD demo :
+
+   
+![dashboard](photos/dashboard.png)
+![upload](photos/upload.png)
+![chat](photos/chat.png)
   
 - Steps that i followed :
   - 1. Made .env(for hugging face api key and chroma dir) and requirements.txt 
