@@ -1,0 +1,6 @@
+Figure 1 Four line detection kernels which respond maximally to horizontal, vertical and oblique (+45 
+and - 45 degree) single pixel wide lines.  
+ 
+  
+ 
+Figure: Original image and detection of lines (only vertical lines)) = (0,1)  \n \n Step 3 :  The original equation of line is ( y=mx+c)  put the value of m and c on this eqe.  \nThen  y=x  \npoints (1,1), (2,2), and (3, 3) are collinear  \n \nea
