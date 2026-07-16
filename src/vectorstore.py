@@ -1,7 +1,7 @@
 # vectorstore.py (full file)
 from dotenv import load_dotenv
 import os
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 
 load_dotenv()

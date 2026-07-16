@@ -20,7 +20,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 
 CHROMA_DIR = os.getenv("CHROMA_DIR")

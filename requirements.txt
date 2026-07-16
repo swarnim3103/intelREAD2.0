@@ -15,3 +15,5 @@ pydantic
 PyPDF2
 google-generativeai
 sentence-transformers
+huggingface-hub<1
+transformers<5

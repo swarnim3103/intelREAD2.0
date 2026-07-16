@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ReactMarkdown from "react-markdown";
 
 type Source = {
   source: string;
@@ -106,7 +107,37 @@ export default function Chat() {
                   {msg.mode === "strict" ? "Strict" : "Hybrid"}
                 </span>
               )}
-              <div className="whitespace-pre-wrap">{msg.text}</div>
+              {msg.sender === "bot" ? (
+                <div className="text-sm leading-relaxed">
+                  <ReactMarkdown
+                    components={{
+                      p: ({ children }) => <p className="my-1">{children}</p>,
+                      ul: ({ children }) => (
+                        <ul className="list-disc pl-5 my-1 space-y-0.5">{children}</ul>
+                      ),
+                      ol: ({ children }) => (
+                        <ol className="list-decimal pl-5 my-1 space-y-0.5">{children}</ol>
+                      ),
+                      li: ({ children }) => <li>{children}</li>,
+                      strong: ({ children }) => (
+                        <strong className="font-semibold">{children}</strong>
+                      ),
+                      h1: ({ children }) => <h3 className="font-semibold my-1">{children}</h3>,
+                      h2: ({ children }) => <h3 className="font-semibold my-1">{children}</h3>,
+                      h3: ({ children }) => <h3 className="font-semibold my-1">{children}</h3>,
+                      code: ({ children }) => (
+                        <code className="bg-gray-200 px-1 py-0.5 rounded text-xs font-mono">
+                          {children}
+                        </code>
+                      ),
+                    }}
+                  >
+                    {msg.text}
+                  </ReactMarkdown>
+                </div>
+              ) : (
+                <div className="whitespace-pre-wrap">{msg.text}</div>
+              )}
 
               {msg.sender === "bot" && msg.sources && msg.sources.length > 0 && (
                 <div className="mt-2 pt-2 border-t border-gray-300 text-xs text-gray-500 space-y-0.5">
