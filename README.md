@@ -1,4 +1,4 @@
-# IntellRead — RAG-Based AI Smart Reader
+# IntellRead — RAG-Based Reader
 
 IntellRead is a Retrieval-Augmented Generation (RAG) system that lets you upload a PDF and ask questions about it. It combines a Gemini-powered LLM with a Chroma vector database for semantic search, so answers are grounded in the actual document content instead of the model's general knowledge.
 
