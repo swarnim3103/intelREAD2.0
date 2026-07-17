@@ -19,7 +19,10 @@ if not all([CHROMA_TENANT, CHROMA_DATABASE, CHROMA_API_KEY]):
 
 print(f"[vectorstore] Connecting to Chroma Cloud — tenant={CHROMA_TENANT}, database={CHROMA_DATABASE}")
 
-embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+# embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+from langchain_openai import OpenAIEmbeddings
+
+embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
 
 # Cloud client — replaces PersistentClient, no local disk involved
 chroma_client = chromadb.CloudClient(
