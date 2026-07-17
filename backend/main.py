@@ -9,7 +9,7 @@ app = FastAPI()
 qa = get_qa_chain()
 
 origins = [
-    "https://intel-read.vercel.app/",
+    "https://intel-read.vercel.app",
     "http://localhost:5173"
 ]
 
