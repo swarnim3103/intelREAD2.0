@@ -90,7 +90,13 @@ CHROMA_DIR=/absolute/path/to/chroma_db
 Run the backend:
 
 ```bash
-uvicorn src.main:app --reload --port 8000
+uvicorn backend.main:app --reload --port 8000
+```
+
+If you are already inside the `backend/` directory, use:
+
+```bash
+uvicorn main:app --reload --port 8000
 ```
 
 

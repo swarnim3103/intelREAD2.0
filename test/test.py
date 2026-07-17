@@ -11,7 +11,7 @@ if not hf_token:
     exit(1)
 
 
-from src.query import run_llm
+from backend.query import run_llm
 print(" Successfully imported run_llm")
 print("Calling run_llm with simple query...")
 result = run_llm("What is 2+2?")
