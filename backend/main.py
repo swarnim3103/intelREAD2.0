@@ -1,7 +1,7 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from pydantic import BaseModel
-from .ingestion import ingest_pages
-from .query import get_qa_chain
+from ingestion import ingest_pages
+from query import get_qa_chain
 from PyPDF2 import PdfReader
 from fastapi.middleware.cors import CORSMiddleware
 

@@ -1,6 +1,7 @@
 # ingestion.py (full file)
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from .vectorstore import get_vectorstore
+from vectorstore import get_vectorstore
+import chromadb
 
 text_splitter = RecursiveCharacterTextSplitter(
     chunk_size=800,
@@ -30,7 +31,9 @@ def ingest_pages(name: str, pages: list[str]):
     duplicate entries in the vector store.
     """
     vs = get_vectorstore()
-
+    existing = vs.get()
+    if existing["ids"]:
+        vs.delete(ids=existing["ids"])
   
     existing = vs._collection.get(where={"source": name})
     if existing and existing.get("ids"):

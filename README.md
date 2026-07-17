@@ -93,11 +93,7 @@ Run the backend:
 uvicorn backend.main:app --reload --port 8000
 ```
 
-If you are already inside the `backend/` directory, use:
-
-```bash
-uvicorn main:app --reload --port 8000
-```
+Run that command from the repository root so Python imports `backend.main` as a package module.
 
 
 ### Frontend

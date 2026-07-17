@@ -1,9 +1,11 @@
 import os
+from pathlib import Path
+
 from dotenv import load_dotenv
 import google.generativeai as genai
-from .vectorstore import get_vectorstore
+from vectorstore import get_vectorstore
 
-load_dotenv()
+load_dotenv(Path(__file__).resolve().parent / ".env")
 
 
 gemini_api_key = os.getenv("GEMINI_API_KEY")
