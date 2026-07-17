@@ -9,7 +9,7 @@ app = FastAPI()
 qa = get_qa_chain()
 
 origins = [
-    "https://intel-read.vercel.app/dashboard"
+    "https://intel-read.vercel.app/Notebook"
 ]
 
 app.add_middleware(
