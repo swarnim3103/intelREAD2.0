@@ -9,9 +9,7 @@ app = FastAPI()
 qa = get_qa_chain()
 
 origins = [
-    "http://localhost:3000",
-    "http://127.0.0.1:8000",
-    "http://127.0.0.1:3000"
+    "https://intel-read.vercel.app/dashboard"
 ]
 
 app.add_middleware(
