@@ -21,7 +21,7 @@ print(f"[vectorstore] Connecting to Chroma Cloud — tenant={CHROMA_TENANT}, dat
 # vectorstore.py
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 
-embeddings = GoogleGenerativeAIEmbeddings(model="models/text-embedding-004")
+embeddings = GoogleGenerativeAIEmbeddings(model="models/text-embedding-001")
 
 # Cloud client — replaces PersistentClient, no local disk involved
 chroma_client = chromadb.CloudClient(
