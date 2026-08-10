@@ -2,7 +2,6 @@ import os
 from pathlib import Path
 
 from dotenv import load_dotenv
-from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 import chromadb
 
@@ -19,7 +18,10 @@ if not all([CHROMA_TENANT, CHROMA_DATABASE, CHROMA_API_KEY]):
 
 print(f"[vectorstore] Connecting to Chroma Cloud — tenant={CHROMA_TENANT}, database={CHROMA_DATABASE}")
 
-embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+# vectorstore.py
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
+
+embeddings = GoogleGenerativeAIEmbeddings(model="models/text-embedding-004")
 
 # Cloud client — replaces PersistentClient, no local disk involved
 chroma_client = chromadb.CloudClient(
