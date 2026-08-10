@@ -33,7 +33,7 @@ chroma_client = chromadb.CloudClient(
 def get_vectorstore():
     vectorstore = Chroma(
         client=chroma_client,
-        collection_name="vectors",
+        collection_name="vectors_v2",
         embedding_function=embeddings,
     )
     return vectorstore
